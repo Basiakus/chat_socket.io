@@ -1,3 +1,4 @@
+const React = require('react');
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -11,7 +12,7 @@ const prodPlugins = [
     ];
 const allPlugins = [
     new HtmlWebpackPlugin({
-            template: 'build/index.html',
+            template: './index.html',
             filename: 'index.html',
             inject: 'body'
         })

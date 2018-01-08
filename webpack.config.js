@@ -26,7 +26,7 @@ module.exports = {
         'webpack/hot/only-dev-server',
     ] : []).concat(['./client/index.js']),
     output: {
-        path: path.resolve(__dirname, './build'),
+        path: path.resolve(__dirname, './public'),
         filename: 'app.bundle.js'
     },
     plugins: allPlugins,

@@ -9,13 +9,13 @@ const userService = new UsersService();
 
 app.use(express.static(__dirname + '/public'));
 
-app.get('/', function(req, res){
+app.get('/', (req, res) => {
 	res.sendFile(__dirname + '/index.html');
 });
 
-io.on('connection', function(socket) {
+io.on('connection', socket => {
 	// klient nasłuchuje na wiadomość wejścia do czatu
-	socket.on('join', function(name){
+	socket.on('join', name => {
 		// użytkownika, który pojawił się w aplikacji zapisujemy do serwisu trzymającego listę osób w czacie
 		userService.addUser({
 		id: socket.id,
@@ -32,7 +32,7 @@ io.on('connection', function(socket) {
 		users: userService.getAllUsers()
 		});
 	})
-	socket.on('message', function(message){
+	socket.on('message', message => {
 		const {name} = userService.getUserById(socket.id);
 		socket.broadcast.emit('message', {
 			text: message.text,
